@@ -6,7 +6,7 @@
       rgba(0, 0, 0, 0) 0%,
       rgba(0, 0, 0, 1) 100%
     ),
-    url('http://mppmduse2pmpovwapp.azurewebsites.net/wp-content/uploads/2019/09/netflix-background-9.jpg');
+    url('https://genotipia.com/wp-content/uploads/2020/04/Netflix-Background-prueba-1.jpg');
   background-size: cover;
   position: relative;
 
@@ -39,7 +39,7 @@
       width: 300px;
       height: 300px;
       padding: 30px;
-      border-radius: 5px;
+      border-radius: 20px;
       background-color: var(--main-color);
       display: flex;
       flex-direction: column;
@@ -60,18 +60,33 @@
       button {
         height: 40px;
         border-radius: 5px;
-        background-color: red;
+        background-color: var(--color-red);
         color: white;
         border: none;
         font-size: 18px;
         font-weight: 500;
         cursor: pointer;
+        transition: ease-in-out 0.3s;
+      }
+
+      button:hover {
+        background-color: red;
+        color: white;
       }
 
       span {
         color: lightgray;
+        cursor: pointer;
         b {
           color: white;
+        }
+      }
+
+      span:hover {
+        color: lightgray;
+        b {
+          color: white;
+          text-decoration: underline;
         }
       }
     }
