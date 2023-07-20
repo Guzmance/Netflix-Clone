@@ -5,7 +5,7 @@
   position: fixed;
   top: 0;
   z-index: 999;
-  background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.3) 50%);
+  background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.4) 50%);
 
   &.scrolled {
     background-color: var(--main-color);
@@ -30,6 +30,14 @@
       span {
         margin-right: 20px;
         cursor: pointer;
+        transition: ease-in-out 0.3s;
+      }
+
+      span:hover {
+        color: var(--color-white);
+        text-shadow: 0 0 10px var(--main-color);
+        transform: scale(1.1);
+        text-decoration: underline;
       }
     }
 
@@ -40,6 +48,11 @@
       .icon {
         margin: 0px 15px;
         cursor: pointer;
+        transition: ease-in-out 0.3s;
+      }
+
+      .icon:hover {
+        color: var(--color-red);
       }
 
       img {
@@ -60,6 +73,11 @@
         span {
           padding: 10px;
           cursor: pointer;
+          transition: ease-in-out 0.3s;
+        }
+
+        span:hover {
+          background-color: var(--color-red);
         }
 
         &:hover {
