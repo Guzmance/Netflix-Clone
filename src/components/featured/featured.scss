@@ -61,13 +61,25 @@
         cursor: pointer;
 
         &.play {
-          background-color: white;
+          background-color: var(--color-white);
           color: var(--main-color);
+          transition: ease-in-out 0.3s;
+        }
+
+        &.play:hover {
+          background-color: var(--color-gray);
+          color: var(--color-white);
         }
 
         &.more {
-          background-color: gray;
-          color: white;
+          background-color: var(--color-gray);
+          color: var(--color-white);
+          transition: ease-in-out 0.3s;
+        }
+
+        &.more:hover {
+          background-color: var(--color-white);
+          color: var(--main-color);
         }
 
         span {
