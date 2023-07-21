@@ -1,9 +1,16 @@
 import { ArrowDropDown, Notifications, Search } from '@material-ui/icons';
 import { useState } from 'react';
 import './navbar.scss';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const { state } = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    navigate('/');
+  };
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
@@ -24,6 +31,11 @@ const Navbar = () => {
           <span>My List</span>
         </div>
         <div className="right">
+          {state?.logged ? (
+            <span>Welcome: {state.email}</span>
+          ) : (
+            <span>Welcome</span>
+          )}
           <Search className="icon" />
           <span>KID</span>
           <Notifications className="icon" />
@@ -34,8 +46,10 @@ const Navbar = () => {
           <div className="profile">
             <ArrowDropDown className="icon" />
             <div className="options">
-              <span>Settings</span>
-              <span>Logout</span>
+              <span className="optionsItem">Settings</span>
+              <span className="optionsItem" onClick={handleSignOut}>
+                Logout
+              </span>
             </div>
           </div>
         </div>

@@ -70,13 +70,13 @@
           border-radius: 5px;
         }
 
-        span {
+        .optionsItem {
           padding: 10px;
           cursor: pointer;
           transition: ease-in-out 0.3s;
         }
 
-        span:hover {
+        .optionsItem:hover {
           background-color: var(--color-red);
         }
 

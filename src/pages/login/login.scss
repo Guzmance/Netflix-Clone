@@ -57,8 +57,9 @@
         }
       }
 
-      button {
+      .loginButton {
         height: 40px;
+        width: 100%;
         border-radius: 5px;
         background-color: var(--color-red);
         color: white;
@@ -68,20 +69,18 @@
         cursor: pointer;
         transition: ease-in-out 0.3s;
       }
-
-      button:hover {
+      .loginButton:hover {
         background-color: red;
         color: white;
       }
-
       span {
         color: lightgray;
         cursor: pointer;
         b {
+          margin-left: 5px;
           color: white;
         }
       }
-
       span:hover {
         color: lightgray;
         b {
