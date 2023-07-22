@@ -55,7 +55,6 @@ const Watch = () => {
               </div>
               <div className="movie__rating">
                 {currentMovieDetail ? currentMovieDetail.vote_average : ''}{' '}
-                <i class="fas fa-star" />
                 <span className="movie__voteCount">
                   {currentMovieDetail
                     ? '(' + currentMovieDetail.vote_count + ') votes'
@@ -73,18 +72,20 @@ const Watch = () => {
               <div className="movie__genres">
                 {currentMovieDetail && currentMovieDetail.genres
                   ? currentMovieDetail.genres.map((genre) => (
-                      <>
+                      <React.Fragment key={genre.id}>
                         <span className="movie__genre" id={genre.id}>
                           {genre.name}
                         </span>
-                      </>
+                      </React.Fragment>
                     ))
                   : ''}
               </div>
             </div>
             <div className="movie__detailRightBottom">
               <div className="synopsisText">Synopsis</div>
-              <div>{currentMovieDetail ? currentMovieDetail.overview : ''}</div>
+              <div className="overview">
+                {currentMovieDetail ? currentMovieDetail.overview : ''}
+              </div>
             </div>
           </div>
         </div>
@@ -133,7 +134,7 @@ const Watch = () => {
           {currentMovieDetail &&
             currentMovieDetail.production_companies &&
             currentMovieDetail.production_companies.map((company) => (
-              <>
+              <React.Fragment key={company.id}>
                 {company.logo_path && (
                   <span className="productionCompanyImage">
                     <img
@@ -146,7 +147,7 @@ const Watch = () => {
                     <span>{company.name}</span>
                   </span>
                 )}
-              </>
+              </React.Fragment>
             ))}
         </div>
       </div>

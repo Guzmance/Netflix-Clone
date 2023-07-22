@@ -13,6 +13,7 @@ export default function List() {
   const [slideNumber, setSlideNumber] = useState(0);
   const [movieList, setMovieList] = useState([]);
   const [movieListPopular, setMovieListPopular] = useState([]);
+  const [clickLimit, setClickLimit] = useState(window.innerWidth / 230);
   const { type } = useParams();
 
   useEffect(() => {
@@ -51,7 +52,7 @@ export default function List() {
       setSlideNumber(slideNumber - 1);
       listRef.current.style.transform = `translateX(${230 + distance}px)`;
     }
-    if (direction === 'right' && slideNumber < 5) {
+    if (direction === 'right' && slideNumber < 10 - clickLimit) {
       setSlideNumber(slideNumber + 1);
       listRef.current.style.transform = `translateX(${-230 + distance}px)`;
     }
@@ -83,7 +84,7 @@ export default function List() {
         </h2>
         <div className="list__cards">
           {movieList.map((movie) => (
-            <ListItem movie={movie} />
+            <ListItem key={movie.id} movie={movie} />
           ))}
         </div>
       </div>

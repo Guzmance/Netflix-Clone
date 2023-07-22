@@ -24,6 +24,7 @@ export default function Featured() {
         transitionTime={4}
         infiniteLoop={true}
         showStatus={false}
+        className="carousel"
       >
         {popularMovies.map((movie) => (
           <Link
