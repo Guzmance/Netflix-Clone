@@ -1,0 +1,213 @@
+@import '../../app.scss';
+
+.movie {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.movie__intro {
+  width: 80%;
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.movie__backdrop {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  object-position: 0 35%;
+  @include mobile {
+    width: 100%;
+    height: 80%;
+  }
+}
+
+.movie__detail {
+  align-items: center;
+  width: 75%;
+  display: flex;
+  position: relative;
+  bottom: 235px;
+  @include mobile {
+    bottom: 115px;
+  }
+}
+
+.movie__detailLeft {
+  margin-right: 30px;
+  @include mobile {
+    display: none;
+  }
+}
+
+.movie__poster {
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: rgba(221, 218, 218, 0.08) 0px 22px 40px 6px;
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.movie__detailRight {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+  justify-content: space-between;
+  @include mobile {
+    height: auto;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+.movie__detailRightTop > div {
+  text-shadow: 0px 0px 10px #000000;
+  margin-bottom: 0.5rem;
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.movie__name {
+  font-weight: 600;
+  font-size: 3rem;
+  @include mobile {
+    font-size: 1.5rem;
+  }
+}
+
+.movie__voteCount {
+  margin-left: 1rem;
+  @include mobile {
+    font-size: 1rem;
+  }
+}
+
+.movie__genres {
+  margin: 1.25rem 0;
+  @include tablet {
+    display: none;
+  }
+  @include mobile {
+    display: none;
+  }
+}
+
+.movie__genre {
+  padding: 0.5rem;
+  color: black;
+  background-color: white;
+  border: 2px solid white;
+  text-shadow: none;
+  border-radius: 20px;
+  margin-right: 1rem;
+}
+
+.movie__detailRightBottom {
+  margin: 2rem 0;
+  flex: 0.8;
+}
+
+.synopsisText {
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+.synopsisText > div:last-of-type {
+  margin-left: auto;
+}
+
+.movie__links {
+  position: relative;
+  bottom: 120px;
+  display: flex;
+  justify-content: center;
+  gap: 8rem;
+  width: 75%;
+  @include mobile {
+    display: grid;
+    gap: 2rem;
+  }
+}
+
+.movie__heading {
+  font-size: 2.2rem;
+  color: white;
+  @include mobile {
+    font-size: 1.5rem;
+  }
+}
+
+.movie__Button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 150px;
+  color: black;
+  font-weight: bold;
+}
+
+.movie__homeButton {
+  color: white;
+  background-color: var(--color-red);
+  transition: ease-in-out 0.3s;
+}
+
+.movie__homeButton:hover {
+  color: white;
+  background-color: var(--color-gray);
+}
+
+.movie__imdbButton {
+  background-color: #f3ce13;
+  transition: ease-in-out 0.3s;
+}
+
+.movie__imdbButton:hover {
+  color: white;
+  background-color: var(--color-gray);
+}
+
+.newTab {
+  margin-left: 1.4rem;
+}
+
+.movie__production {
+  color: white;
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 4rem;
+  @include mobile {
+    display: grid;
+    gap: 2rem;
+  }
+}
+
+.movie__productionComapany {
+  width: 200px;
+  margin: 2rem;
+  background-color: white;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.productionCompanyImage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
