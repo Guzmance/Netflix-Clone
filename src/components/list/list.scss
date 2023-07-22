@@ -6,7 +6,7 @@
     color: white;
     font-size: 20px;
     font-weight: 500;
-    margin-left: 50px;
+    margin-left: 100px;
   }
 
   .wrapper {
@@ -39,5 +39,24 @@
       transform: translateX(0px);
       transition: all 1s ease;
     }
+  }
+}
+.movie__list {
+  padding: 0 3rem 3rem 3rem;
+  color: white;
+  width: 95%;
+
+  .list__title {
+    margin: 1.5rem;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 50px;
+  }
+
+  .list__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }

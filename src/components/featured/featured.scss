@@ -1,91 +1,53 @@
-.featured {
+.posterImage {
   height: 90vh;
-  position: relative;
+}
 
-  .category {
-    position: absolute;
-    top: 80px;
-    left: 50px;
-    font-size: 30px;
-    font-weight: 500;
-    color: white;
-    display: flex;
-    align-items: center;
+.posterImage > img {
+  margin: auto;
+  display: block;
+  width: 100%;
+}
 
-    select {
-      cursor: pointer;
-      background-color: var(--main-color);
-      border: 1px solid white;
-      color: white;
-      margin-left: 20px;
-      padding: 5px;
-    }
-  }
+.posterImage__overlay {
+  position: absolute;
+  padding: 5rem;
+  bottom: 0px;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: flex-start;
+  background-image: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 1));
+  opacity: 1;
+  transition: opacity 0.3s;
+}
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+.posterImage__overlay:hover {
+  opacity: 1;
+}
 
-  .info {
-    width: 35%;
-    position: absolute;
-    left: 50px;
-    bottom: 100px;
-    color: white;
-    display: flex;
-    flex-direction: column;
+.posterImage__title {
+  font-weight: 900;
+  font-size: 4rem;
+  margin-bottom: 0.4rem;
+  text-align: left;
+}
 
-    img {
-      width: 400px;
-    }
+.posterImage__runtime {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
 
-    .desc {
-      margin: 20px 0px;
-    }
+.posterImage__rating {
+  margin-left: 3rem;
+}
 
-    .buttons {
-      display: flex;
-
-      button {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 18px;
-        font-weight: 500;
-        margin-right: 10px;
-        cursor: pointer;
-
-        &.play {
-          background-color: var(--color-white);
-          color: var(--main-color);
-          transition: ease-in-out 0.3s;
-        }
-
-        &.play:hover {
-          background-color: var(--color-gray);
-          color: var(--color-white);
-        }
-
-        &.more {
-          background-color: var(--color-gray);
-          color: var(--color-white);
-          transition: ease-in-out 0.3s;
-        }
-
-        &.more:hover {
-          background-color: var(--color-white);
-          color: var(--main-color);
-        }
-
-        span {
-          margin-left: 5px;
-        }
-      }
-    }
-  }
+.posterImage__description {
+  font-style: italic;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  display: flex;
+  text-align: left;
+  width: 50%;
 }

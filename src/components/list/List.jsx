@@ -2,13 +2,45 @@ import {
   ArrowBackIosOutlined,
   ArrowForwardIosOutlined,
 } from '@material-ui/icons';
-import { useRef, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import ListItem from '../listItem/ListItem';
 import './list.scss';
+import { useParams } from 'react-router-dom';
+import ListItemS from '../listItem/ListItemS';
 
 export default function List() {
   const [isMoved, setIsMoved] = useState(false);
   const [slideNumber, setSlideNumber] = useState(0);
+  const [movieList, setMovieList] = useState([]);
+  const [movieListPopular, setMovieListPopular] = useState([]);
+  const { type } = useParams();
+
+  useEffect(() => {
+    getData();
+    getDataPopular();
+  }, []);
+
+  useEffect(() => {
+    getData();
+    getDataPopular();
+  }, [type]);
+
+  const getData = () => {
+    fetch(
+      `https://api.themoviedb.org/3/movie/${
+        type ? type : 'popular'
+      }?api_key=8fcfc85e3ca6be95583ec3255cfe3faa&language=en-US`
+    )
+      .then((res) => res.json())
+      .then((data) => setMovieList(data.results));
+  };
+  const getDataPopular = () => {
+    fetch(
+      `https://api.themoviedb.org/3/tv/popular?api_key=8fcfc85e3ca6be95583ec3255cfe3faa&language=en-US`
+    )
+      .then((res) => res.json())
+      .then((data) => setMovieListPopular(data.results));
+  };
 
   const listRef = useRef();
 
@@ -25,33 +57,36 @@ export default function List() {
     }
   };
   return (
-    <div className="list">
-      <span className="listTitle">Continue to watch</span>
-      <div className="wrapper">
-        <ArrowBackIosOutlined
-          className="sliderArrow left"
-          onClick={() => handleClick('left')}
-          style={{ display: !isMoved && 'none' }}
-        />
-        <div className="container" ref={listRef}>
-          <ListItem index={0} />
-          <ListItem index={1} />
-          <ListItem index={2} />
-          <ListItem index={3} />
-          <ListItem index={4} />
-          <ListItem index={5} />
-          <ListItem index={6} />
-          <ListItem index={7} />
-          <ListItem index={8} />
-          <ListItem index={10} />
-          <ListItem index={11} />
-          <ListItem index={12} />
+    <>
+      <div className="list">
+        <span className="listTitle">SERIES COMING SOON</span>
+        <div className="wrapper">
+          <ArrowBackIosOutlined
+            className="sliderArrow left"
+            onClick={() => handleClick('left')}
+            style={{ display: !isMoved && 'none' }}
+          />
+          <div className="container" ref={listRef}>
+            {movieListPopular.map((movie) => (
+              <ListItemS key={movie.id} movie={movie} />
+            ))}
+          </div>
+          <ArrowForwardIosOutlined
+            className="sliderArrow right"
+            onClick={() => handleClick('right')}
+          />
         </div>
-        <ArrowForwardIosOutlined
-          className="sliderArrow right"
-          onClick={() => handleClick('right')}
-        />
       </div>
-    </div>
+      <div className="movie__list">
+        <h2 className="list__title">
+          {(type ? type : 'POPULAR').toUpperCase()}
+        </h2>
+        <div className="list__cards">
+          {movieList.map((movie) => (
+            <ListItem movie={movie} />
+          ))}
+        </div>
+      </div>
+    </>
   );
 }

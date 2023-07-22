@@ -36,17 +36,6 @@ export default function Register() {
 
     onResetForm();
   };
-  const handleFinish = (event) => {
-    event.preventDefault();
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-    const name = event.target.name.value;
-    const phone = event.target.phone.value;
-
-    if (email && password && name && country && phone) {
-      navigate('/');
-    }
-  };
   return (
     <div className="register">
       <div className="top">
@@ -56,9 +45,6 @@ export default function Register() {
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
             alt=""
           />
-          <NavLink to="/netflix">
-            <button className="loginButton">Sign In</button>
-          </NavLink>
         </div>
       </div>
       <div className="container">
@@ -132,6 +118,10 @@ export default function Register() {
             Get Started
           </button>
         </form>
+
+        <NavLink to="/">
+          <button className="loginButton">Sign In</button>
+        </NavLink>
       </div>
     </div>
   );

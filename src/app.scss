@@ -16,3 +16,7 @@
   --color-red: #e50914;
   --color-gray: #818181;
 }
+
+body {
+  background-color: var(--main-color);
+}

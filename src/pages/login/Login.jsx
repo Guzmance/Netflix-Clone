@@ -13,7 +13,7 @@ export default function Login() {
   const onLogin = (e) => {
     e.preventDefault();
 
-    navigate('/netflix', {
+    navigate('/home', {
       replace: true,
       state: {
         logged: true,

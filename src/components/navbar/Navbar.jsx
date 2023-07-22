@@ -1,7 +1,7 @@
 import { ArrowDropDown, Notifications, Search } from '@material-ui/icons';
 import { useState } from 'react';
 import './navbar.scss';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const { state } = useLocation();
@@ -24,18 +24,36 @@ const Navbar = () => {
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
             alt=""
           />
-          <span>Homepage</span>
-          <span>Series</span>
-          <span>Movies</span>
-          <span>New and Popular</span>
-          <span>My List</span>
+          <Link
+            className="navbar-option"
+            to="/home"
+            style={{ textDecoration: 'none', color: 'white' }}
+          >
+            <span className="navbar-option">Homepage</span>
+          </Link>
+          <Link
+            className="navbar-option"
+            to="/movies/popular"
+            style={{ textDecoration: 'none', color: 'white' }}
+          >
+            <span className="navbar-option">Popular</span>
+          </Link>
+          <Link
+            className="navbar-option"
+            to="/movies/top_rated"
+            style={{ textDecoration: 'none', color: 'white' }}
+          >
+            <span className="navbar-option">Top Rated</span>
+          </Link>
+          <Link
+            className="navbar-option"
+            to="/movies/upcoming"
+            style={{ textDecoration: 'none', color: 'white' }}
+          >
+            <span className="navbar-option">Upcoming</span>
+          </Link>
         </div>
         <div className="right">
-          {state?.logged ? (
-            <span>Welcome: {state.email}</span>
-          ) : (
-            <span>Welcome</span>
-          )}
           <Search className="icon" />
           <span>KID</span>
           <Notifications className="icon" />
@@ -46,7 +64,6 @@ const Navbar = () => {
           <div className="profile">
             <ArrowDropDown className="icon" />
             <div className="options">
-              <span className="optionsItem">Settings</span>
               <span className="optionsItem" onClick={handleSignOut}>
                 Logout
               </span>

@@ -1,56 +1,65 @@
 import { InfoOutlined, PlayArrow } from '@material-ui/icons';
 import './featured.scss';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { Carousel } from 'react-responsive-carousel';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import StarIcon from '@mui/icons-material/Star';
 
-export default function Featured({ type }) {
+export default function Featured() {
+  const [popularMovies, setPopularMovies] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      'https://api.themoviedb.org/3/movie/popular?api_key=8fcfc85e3ca6be95583ec3255cfe3faa&language=en-US'
+    )
+      .then((res) => res.json())
+      .then((data) => setPopularMovies(data.results));
+  }, []);
   return (
-    <div className="featured">
-      {type && (
-        <div className="category">
-          <span>{type === 'movie' ? 'Movies' : 'Series'}</span>
-          <select name="genre" id="genre">
-            <option>Genre</option>
-            <option value="adventure">Adventure</option>
-            <option value="comedy">Comedy</option>
-            <option value="crime">Crime</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="historical">Historical</option>
-            <option value="horror">Horror</option>
-            <option value="romance">Romance</option>
-            <option value="sci-fi">Sci-fi</option>
-            <option value="thriller">Thriller</option>
-            <option value="western">Western</option>
-            <option value="animation">Animation</option>
-            <option value="drama">Drama</option>
-            <option value="documentary">Documentary</option>
-          </select>
-        </div>
-      )}
-      <img
-        src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-        alt=""
-      />
-      <div className="info">
-        <img
-          src="https://occ-0-1432-1433.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUZdeG1DrMstq-YKHZ-dA-cx2uQN_YbCYx7RABDk0y7F8ZK6nzgCz4bp5qJVgMizPbVpIvXrd4xMBQAuNe0xmuW2WjoeGMDn1cFO.webp?r=df1"
-          alt=""
-        />
-        <span className="desc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
-          adipisci repellendus eum quasi illo, velit numquam, maxime tempora
-          sint deleniti, aliquid qui? Facilis, adipisci! Ratione hic repudiandae
-          temporibus eum earum?
-        </span>
-        <div className="buttons">
-          <button className="play">
-            <PlayArrow />
-            <span>Play</span>
-          </button>
-          <button className="more">
-            <InfoOutlined />
-            <span>Info</span>
-          </button>
-        </div>
-      </div>
+    <div className="poster">
+      <Carousel
+        showThumbs={false}
+        autoPlay={true}
+        transitionTime={4}
+        infiniteLoop={true}
+        showStatus={false}
+      >
+        {popularMovies.map((movie) => (
+          <Link
+            key={movie.id}
+            style={{ textDecoration: 'none', color: 'white' }}
+            to={`/movie/${movie.id}`}
+          >
+            <div className="posterImage">
+              <img
+                src={`https://image.tmdb.org/t/p/original${
+                  movie && movie.backdrop_path
+                }`}
+              />
+            </div>
+            <div className="posterImage__overlay">
+              <div className="posterImage__title">
+                {movie ? movie.original_title : ''}
+              </div>
+              <div className="posterImage__runtime">
+                {movie ? movie.release_date : ''}
+                <span className="posterImage__rating">
+                  <StarIcon
+                    style={{
+                      fontSize: '25px',
+                    }}
+                  />
+                  {movie ? movie.vote_average : ''}
+                </span>
+              </div>
+              <div className="posterImage__description">
+                {movie ? movie.overview : ''}
+              </div>
+            </div>
+          </Link>
+        ))}
+      </Carousel>
     </div>
   );
 }

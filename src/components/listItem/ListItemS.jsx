@@ -10,7 +10,7 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { Link } from 'react-router-dom';
 import StarIcon from '@mui/icons-material/Star';
 
-export default function ListItem({ movie }) {
+export default function ListItemS({ movie }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -37,21 +37,10 @@ export default function ListItem({ movie }) {
           />
           <div className="cards__overlay">
             <div className="card__title">
-              {movie ? movie.original_title : ''}
-            </div>
-            <div className="icons">
-              <Link
-                to={`/movie/${movie.id}`}
-                style={{ textDecoration: 'none', color: 'white' }}
-              >
-                <PlayArrow className="icon" />
-              </Link>
-              <Add className="icon" />
-              <ThumbUpAltOutlined className="icon" />
-              <ThumbDownOutlined className="icon" />
+              {movie ? movie.original_name : ''}
             </div>
             <div className="card__runtime">
-              {movie ? movie.release_date : ''}
+              {movie ? movie.first_air_date : ''}
               <span className="card__rating">
                 <StarIcon
                   style={{
